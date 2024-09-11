@@ -1,0 +1,15 @@
+[package]
+name = "distributed-file-storage"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+axum = "0.7.5"
+dotenv = "0.15.0"
+futures = "0.3.30"
+serde = "1.0.210"
+sqlx = { version = "0.8.2", features = ["runtime-tokio-rustls", "postgres", "derive", "uuid"] }
+thiserror = "1.0.63"
+tokio = {version = "1.40.0", features = ["rt-multi-thread"]}
+tower-http = { version = "0.5.2", features = ["cors"] }
+uuid = {version = "1.10.0", features = ["v4", "serde"]}

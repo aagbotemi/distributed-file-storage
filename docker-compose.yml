@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+    environment:
+      - DATABASE_URL=postgres://username:password@db/database_name
+      - HOST=0.0.0.0
+      - PORT=8080
+      - CHUNK_SIZE=1048576
+    volumes:
+      - ./config:/usr/src/app/config
+
+  db:
+    image: postgres:13
+    environment:
+      - POSTGRES_USER=username
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=database_name
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
